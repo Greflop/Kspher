@@ -10,6 +10,7 @@ using Projet_2._0.AI;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Audio;
+using Kcaspher.AI;
 
 
 namespace Projet_2._0
@@ -55,6 +56,7 @@ namespace Projet_2._0
         public Camera camera;
         //AI_basic AI1;
         AI_W1L1 AI_w1l1;
+        AI_W1L2 AI_w1l2;
         AI_moderate AI2;
         KeyboardState keyboardstate, previouskeyboardstate;
         public Controls controls, controlsPlayer2, controlsWorld2;
@@ -98,7 +100,7 @@ namespace Projet_2._0
             d_w1l2_2 = new Decors(Content_Manager.getInstance().Textures["W1L2_2"], new Rectangle(Res.gI().ScaleX(2520), 0, Res.gI().ScaleX(2520), Res.gI().ScaleY(1050)));
             d_w1l3 = new Decors(Content_Manager.getInstance().Textures["W1L3"], new Rectangle(0, 0, Res.gI().ScaleX(2240), Res.gI().ScaleY(1050)));
 
-            teleport1 = new Rectangle(1240,400,80,80);
+            teleport1 = new Rectangle(1240, 400, 80, 80);
             teleport2 = new Rectangle(3480, 480, 80, 280);
 
             Game1.GetGame().casperr = casper;
@@ -118,6 +120,7 @@ namespace Projet_2._0
             previousgametype = GameType.Exit;
             //AI1 = new AI_basic(Content_Manager.getInstance().Textures["enemy1"], Content_Manager.getInstance().Textures["enemy2"], new Rectangle(Res.gI().ScaleX(960), Res.gI().ScaleY(500), Res.gI().ScaleX(40), Res.gI().ScaleY(40)), new Vector2(3,0),300);
             AI_w1l1 = new AI_W1L1();
+            AI_w1l2 = new AI_W1L2();
             AI2 = new AI_moderate(Content_Manager.getInstance().Textures["enemy1"], new Rectangle(Res.gI().ScaleX(100), Res.gI().ScaleY(100), Res.gI().ScaleX(50), Res.gI().ScaleY(50)));
             this.gametype = gametype;
             //List<Rectangle> enemies = spikes.getList().Concat<Rectangle>(AI_w1l1.getListRectangle()).ToList<Rectangle>;
@@ -229,7 +232,8 @@ namespace Projet_2._0
                         camera.update(gametime, new Vector2(Res.gI().ScaleX(4200), 0));
 
                     Game1.GetGame().casperr = casper;
-                    casper.update(gametime, controls, gametype, w1l2.getList(), sw1l2.getList());
+                    AI_w1l2.update(gametime);
+                    casper.update(gametime, controls, gametype, w1l2.getList(), sw1l2.getList().Concat<Rectangle>(AI_w1l2.getListRectangle()));
                     Game1.GetGame().IsMouseVisible = false;
                     if (casper.Hitbox.Intersects(teleport1))
                         controls.Position = new Vector2(Res.gI().ScaleX(500), Res.gI().ScaleY(726));
@@ -241,7 +245,7 @@ namespace Projet_2._0
                         isThere = true;
                     }
                     if (BigMonster != null)
-                        BigMonster.update(gametime);                        
+                        BigMonster.update(gametime);
                     // IA
                     if (keyboardstate.IsKeyDown(Keys.Escape) && previouskeyboardstate.IsKeyUp(Keys.Escape))
                     {
@@ -472,11 +476,12 @@ namespace Projet_2._0
                     d_w1l2_1.Draw(spritebatch);
                     d_w1l2_2.Draw(spritebatch);
                     casper.Draw(spritebatch, Color.White);
+
                     if (BigMonster != null)
                         BigMonster.Draw(spritebatch);
 
+                    AI_w1l2.Draw(spritebatch);
                     casper.healthpoint.draw(spritebatch, camera);
-                    // IA
                     break;
                 case GameType.Menu_Play_Solo_world1_lvl3:
                     d_w1l3.Draw(spritebatch);
