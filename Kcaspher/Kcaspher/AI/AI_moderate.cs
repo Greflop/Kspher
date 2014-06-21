@@ -20,9 +20,9 @@ namespace Projet_2._0
         {
             this.texture = texture;
             this.hitbox = hitbox;
-            aggro = new Rectangle(hitbox.X - Res.gI().ScaleX(350) / 2, hitbox.Y - Res.gI().ScaleY(350)/2, Res.gI().ScaleX(500), Res.gI().ScaleY(500));
+            aggro = new Rectangle(hitbox.X - Res.gI().ScaleX(800) / 2, hitbox.Y - Res.gI().ScaleY(800)/2, Res.gI().ScaleX(800), Res.gI().ScaleY(800));
             Direction = new Vector2(0, 0);
-            Velocity = new Vector2(2.5f,2.5f);
+            Velocity = new Vector2(4f,4f);
             Position = new Vector2(0, 0);
         }
 
@@ -47,8 +47,8 @@ namespace Projet_2._0
 
                 }
             }
-            aggro.X = hitbox.X - Res.gI().ScaleX(500) / 2;
-            aggro.Y = hitbox.Y - Res.gI().ScaleY(500) / 2;
+            aggro.X = hitbox.X - Res.gI().ScaleX(800) / 2;
+            aggro.Y = hitbox.Y - Res.gI().ScaleY(800) / 2;
             if (!aggro.Intersects(casper.Hitbox))
             {
                 casperIsIntersecting = false;

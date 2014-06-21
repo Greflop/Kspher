@@ -73,6 +73,7 @@ namespace Projet_2._0
             AddTextures("Particules/Etoile", "etoile");
             AddTextures("AI/enemy1", "enemy1");
             AddTextures("AI/enemy1.1", "enemy2");
+            AddTextures("AI/WallW1L2", "Wall");
             AddTextures("Niveaux/W1L1_1", "W1L1_1");
             AddTextures("Niveaux/W1L1_2", "W1L1_2");
             AddTextures("Niveaux/W1L2_1", "W1L2_1");
