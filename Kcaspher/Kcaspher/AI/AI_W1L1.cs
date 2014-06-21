@@ -14,8 +14,11 @@ namespace Projet_2._0.AI
 
         public AI_W1L1()
         {
-            AI_w1l1.Add(new AI_basic(Content_Manager.getInstance().Textures["enemy1"], Content_Manager.getInstance().Textures["enemy2"], new Rectangle(Res.gI().ScaleX(222), Res.gI().ScaleY(500), Res.gI().ScaleX(40), Res.gI().ScaleY(40)), new Vector2(3, 0), 300));
-            AI_w1l1.Add(new AI_basic(Content_Manager.getInstance().Textures["enemy1"], Content_Manager.getInstance().Textures["enemy2"], new Rectangle(Res.gI().ScaleX(500), Res.gI().ScaleY(700), Res.gI().ScaleX(40), Res.gI().ScaleY(40)), new Vector2(3, 0), 300));
+            AI_w1l1.Add(new AI_basic(Content_Manager.getInstance().Textures["enemy1"], Content_Manager.getInstance().Textures["enemy2"], new Rectangle(Res.gI().ScaleX(1120), Res.gI().ScaleY(920), Res.gI().ScaleX(40), Res.gI().ScaleY(40)), new Vector2(3, 0), 440));
+            AI_w1l1.Add(new AI_basic(Content_Manager.getInstance().Textures["enemy1"], Content_Manager.getInstance().Textures["enemy2"], new Rectangle(Res.gI().ScaleX(2000), Res.gI().ScaleY(920), Res.gI().ScaleX(40), Res.gI().ScaleY(40)), new Vector2(3, 0), 1160));
+            AI_w1l1.Add(new AI_basic(Content_Manager.getInstance().Textures["enemy1"], Content_Manager.getInstance().Textures["enemy2"], new Rectangle(Res.gI().ScaleX(3320), Res.gI().ScaleY(920), Res.gI().ScaleX(40), Res.gI().ScaleY(40)), new Vector2(3, 0), 320));
+            AI_w1l1.Add(new AI_basic(Content_Manager.getInstance().Textures["enemy1"], Content_Manager.getInstance().Textures["enemy2"], new Rectangle(Res.gI().ScaleX(3440), Res.gI().ScaleY(320), Res.gI().ScaleX(40), Res.gI().ScaleY(40)), new Vector2(3, 0), 100));
+
         }
 
         public void update(GameTime gametime)
