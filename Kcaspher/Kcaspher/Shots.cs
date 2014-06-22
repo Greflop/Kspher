@@ -15,8 +15,6 @@ namespace Kcaspher
         List<Bullet> ammunition;
         MouseState mouseState, previousmouseState;
         Camera camera;
-        Rectangle Rectangle;
-
 
         public Shots()
         {            
@@ -26,7 +24,7 @@ namespace Kcaspher
             //count = 0;
         }
 
-        public void update(GameTime gametime, Vector2 origin)
+        public void update(GameTime gametime, Vector2 origin, List<AI_moderate> AIlist)
         {
             /// camera position
             if (origin.X > Res.gI().ScaleX(840))
@@ -41,7 +39,16 @@ namespace Kcaspher
                 SoundManager.gun.Play();
             }
             foreach (Bullet bullet in ammunition)
+            {
                 bullet.update();
+                for (int i = 0; i < AIlist.Count; i++)
+                {
+                    if (AIlist[i].hitbox.Intersects(bullet.Hitbox))
+                    {
+                        AIlist.RemoveAt(i);
+                    }
+                }
+            }
             if (ammunition.Count != 0)
             {
 

@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 
 namespace Projet_2._0
 {
-    class AI_moderate
+    public class AI_moderate
     {
         public Texture2D texture;
         public Rectangle hitbox;

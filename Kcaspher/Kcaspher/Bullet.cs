@@ -18,7 +18,7 @@ namespace Kcaspher
             this.Origin = Origin;
             this.Position = Origin;
             Hitbox = new Rectangle((int)Position.X, (int)Position.Y, 15, 15);
-            Velocity = new Vector2(6f, 6f);
+            Velocity = new Vector2(7f, 7f);
             this.Direction = Direction - Origin;
             this.Direction.Normalize();
             isVisible = new Rectangle((int)Origin.X - Res.gI().ScaleX(750), (int)Origin.Y - Res.gI().ScaleY(750), Res.gI().ScaleX(1500), Res.gI().ScaleY(1500));

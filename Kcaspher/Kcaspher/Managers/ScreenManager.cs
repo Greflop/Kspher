@@ -74,7 +74,7 @@ namespace Projet_2._0
         Sw1l2 sw1l2;
         Sw1l3 sw1l3;
         public ParticleEngine tp1,tp2, tp3, tp4;
-        Shots shots;
+        Shots shots, shots2, shots3;
         public ScreenManager(GameType gametype, Game1 game)
         {
             menubase = new Menu_Base(Content_Manager.getInstance().Textures["menubase"]);
@@ -111,6 +111,8 @@ namespace Projet_2._0
             tp1 = tp2 = tp3=tp4 = new ParticleEngine(textures, new Vector2(0, 0));
 
             shots = new Shots();
+            shots2 = new Shots();
+            shots3 = new Shots();
 
             Game1.GetGame().casperr = casper;
             d_w2l1 = new Decors(Content_Manager.getInstance().Textures["W2L1"], new Rectangle(0, 0, Res.gI().ScaleX(2520), Res.gI().ScaleY(1050)));
@@ -315,12 +317,12 @@ namespace Projet_2._0
                         camera.update(gametime, casper2.Position);
                     if (casper2.Position.X > Res.gI().ScaleX(1680))
                         camera.update(gametime, new Vector2(Res.gI().ScaleX(1680), 0));
-                    //AI_w2l1.update(gametime, casper2);
+                    AI_w2l1.update(gametime, casper2);
                     Game1.GetGame().casperr = casper2;
                     casper2.update(gametime, controlsWorld2, gametype, w2l1.getList(), AI_w2l1.getListRectangle());
-                    //AI2.update(gametime, casper2);
+                    
                     Game1.GetGame().IsMouseVisible = true;
-                    shots.update(gametime, casper2.Position);
+                    shots.update(gametime, casper2.Position, AI_w2l1.AI_w2l1);
                     if (keyboardstate.IsKeyDown(Keys.Escape) && previouskeyboardstate.IsKeyUp(Keys.Escape))
                     {
                         //casper.update(gametime);
@@ -348,7 +350,8 @@ namespace Projet_2._0
 
                     Game1.GetGame().casperr = casper2;
                     casper2.update(gametime, controlsWorld2, gametype, w2l2.getList(), new List<Rectangle>());
-                    Game1.GetGame().IsMouseVisible = false;
+                    Game1.GetGame().IsMouseVisible = true;
+                    shots2.update(gametime, casper2.Position, new List<AI_moderate>());
                     // IA
                     if (keyboardstate.IsKeyDown(Keys.Escape) && previouskeyboardstate.IsKeyUp(Keys.Escape))
                     {
@@ -376,7 +379,8 @@ namespace Projet_2._0
 
                     Game1.GetGame().casperr = casper2;
                     casper2.update(gametime, controlsWorld2, gametype, w2l3.getList(), new List<Rectangle>());
-                    Game1.GetGame().IsMouseVisible = false;
+                    Game1.GetGame().IsMouseVisible = true;
+                    shots3.update(gametime, casper2.Position, new List<AI_moderate>()); 
                     if (keyboardstate.IsKeyDown(Keys.Escape) && previouskeyboardstate.IsKeyUp(Keys.Escape))
                     {
                         Game1.GetGame().IsMouseVisible = true;
@@ -524,12 +528,14 @@ namespace Projet_2._0
                     d_w2l2.Draw(spritebatch);
                     casper2.Draw(spritebatch, Color.White);
                     casper2.healthpoint.draw(spritebatch, camera);
+                    shots2.Draw(spritebatch);
                     // IA
                     break;
                 case GameType.Menu_Play_Solo_world2_lvl3:
                     d_w2l3.Draw(spritebatch);
                     casper2.Draw(spritebatch, Color.White);
                     casper2.healthpoint.draw(spritebatch, camera);
+                    shots3.Draw(spritebatch);
                     // IA
                     break;
                 case GameType.Menu_Pause:
