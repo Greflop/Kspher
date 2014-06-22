@@ -11,6 +11,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Audio;
 using Kcaspher.AI;
+using Kcaspher;
 
 
 namespace Projet_2._0
@@ -71,6 +72,7 @@ namespace Projet_2._0
         Spikes spikes;
         Sw1l2 sw1l2;
         Sw1l3 sw1l3;
+        Shots shots;
         public ScreenManager(GameType gametype, Game1 game)
         {
             menubase = new Menu_Base(Content_Manager.getInstance().Textures["menubase"]);

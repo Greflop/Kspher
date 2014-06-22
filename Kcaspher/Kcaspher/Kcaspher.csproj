@@ -113,6 +113,7 @@
     <Compile Include="AI\AI_moderate.cs" />
     <Compile Include="AI\AI_W1L1.cs" />
     <Compile Include="AI\AI_W1L2.cs" />
+    <Compile Include="Bullet.cs" />
     <Compile Include="Casper.cs" />
     <Compile Include="Controls.cs" />
     <Compile Include="Decors.cs" />
@@ -122,6 +123,7 @@
     <Compile Include="Object.cs" />
     <Compile Include="Obstacles.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="Shots.cs" />
     <Compile Include="Triangle.cs" />
     <Compile Include="Vision\Animated.cs" />
     <Compile Include="Vision\Animation.cs" />
