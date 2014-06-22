@@ -7,16 +7,16 @@ using Microsoft.Xna.Framework;
 
 namespace Projet_2._0
 {
-    class AI_moderate : Movable
+    class AI_moderate
     {
         public Texture2D texture;
         public Rectangle hitbox;
         public Rectangle aggro;
         bool casperIsIntersecting = false;
+        Vector2 Direction,Velocity,Position;
 
 
         public AI_moderate(Texture2D texture, Rectangle hitbox)
-            : base(texture, hitbox)
         {
             this.texture = texture;
             this.hitbox = hitbox;

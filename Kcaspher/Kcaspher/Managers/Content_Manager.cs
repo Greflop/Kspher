@@ -71,6 +71,7 @@ namespace Projet_2._0
             AddTextures("PlayerWorld2/PlayerGauche4","PlayerGauche4");
             AddTextures("Particules/particule", "particule");
             AddTextures("Particules/Etoile", "etoile");
+            AddTextures("Particules/tp", "tp");
             AddTextures("AI/enemy1", "enemy1");
             AddTextures("AI/enemy1.1", "enemy2");
             AddTextures("AI/WallW1L2", "Wall");

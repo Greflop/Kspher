@@ -113,6 +113,9 @@
     <Compile Include="AI\AI_moderate.cs" />
     <Compile Include="AI\AI_W1L1.cs" />
     <Compile Include="AI\AI_W1L2.cs" />
+    <Compile Include="AI\AI_W2L1.cs" />
+    <Compile Include="AI\AI_W2L2.cs" />
+    <Compile Include="AI\AI_W2L3.cs" />
     <Compile Include="Casper.cs" />
     <Compile Include="Controls.cs" />
     <Compile Include="Decors.cs" />
