@@ -110,6 +110,8 @@ namespace Projet_2._0
             textures.Add(Content_Manager.getInstance().Textures["tp"]);
             tp1 = tp2 = tp3=tp4 = new ParticleEngine(textures, new Vector2(0, 0));
 
+            shots = new Shots();
+
             Game1.GetGame().casperr = casper;
             d_w2l1 = new Decors(Content_Manager.getInstance().Textures["W2L1"], new Rectangle(0, 0, Res.gI().ScaleX(2520), Res.gI().ScaleY(1050)));
             d_w2l2 = new Decors(Content_Manager.getInstance().Textures["W2L2"], new Rectangle(0, 0, Res.gI().ScaleX(2520), Res.gI().ScaleY(1050)));
@@ -313,11 +315,12 @@ namespace Projet_2._0
                         camera.update(gametime, casper2.Position);
                     if (casper2.Position.X > Res.gI().ScaleX(1680))
                         camera.update(gametime, new Vector2(Res.gI().ScaleX(1680), 0));
-                    AI_w2l1.update(gametime, casper2);
+                    //AI_w2l1.update(gametime, casper2);
                     Game1.GetGame().casperr = casper2;
                     casper2.update(gametime, controlsWorld2, gametype, w2l1.getList(), AI_w2l1.getListRectangle());
-                    AI2.update(gametime, casper2);
-                    Game1.GetGame().IsMouseVisible = false;
+                    //AI2.update(gametime, casper2);
+                    Game1.GetGame().IsMouseVisible = true;
+                    shots.update(gametime, casper2.Position);
                     if (keyboardstate.IsKeyDown(Keys.Escape) && previouskeyboardstate.IsKeyUp(Keys.Escape))
                     {
                         //casper.update(gametime);
@@ -514,6 +517,7 @@ namespace Projet_2._0
                     //AI2.Draw(spritebatch);
                     AI_w2l1.Draw(spritebatch);
                     casper2.healthpoint.draw(spritebatch, camera);
+                    shots.Draw(spritebatch);
                     //IA
                     break;
                 case GameType.Menu_Play_Solo_world2_lvl2:

@@ -6,35 +6,50 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Projet_2._0;
+using Projet_2._0.Menus;
 
 namespace Kcaspher
 {
     public class Shots
     {
         List<Bullet> ammunition;
-        int count;
         MouseState mouseState, previousmouseState;
+        Camera camera;
+        Rectangle Rectangle;
 
 
         public Shots()
         {            
             ammunition = new List<Bullet>();
-            count = 0;
+            camera = new Camera(Game1.GetGame().GraphicsDevice.Viewport);
+            //Rectangle = new Rectangle (0,0, Res.gI().ScaleX(4200))
+            //count = 0;
         }
 
-        public void update(Vector2 origin)
+        public void update(GameTime gametime, Vector2 origin)
         {
+            /// camera position
+            if (origin.X > Res.gI().ScaleX(840))
+                camera.update(gametime, origin);
+            if (origin.X > Res.gI().ScaleX(1680))
+                camera.update(gametime, new Vector2(Res.gI().ScaleX(1680), 0));
+            ///
+            mouseState = Mouse.GetState();
             if (previousmouseState.LeftButton == ButtonState.Pressed && mouseState.LeftButton == ButtonState.Released)
             {
-                ammunition.Add(new Bullet(origin, new Vector2(mouseState.X,mouseState.Y)));
-                count++;
+                ammunition.Add(new Bullet(origin, new Vector2(mouseState.X +camera.centre.X  ,mouseState.Y)));
+                SoundManager.gun.Play();
             }
             foreach (Bullet bullet in ammunition)
                 bullet.update();
-            for (int i = 0; i < count; i++)
+            if (ammunition.Count != 0)
             {
-                if (ammunition[i].Position.X - ammunition[i].Origin.X < Res.gI().ScaleX(500) || ammunition[i].Position.Y - ammunition[i].Origin.Y < Res.gI().ScaleY(500))
-                    ammunition.RemoveAt(i);
+
+                for (int i = 0; i < ammunition.Count; i++)
+                {
+                    if (!(ammunition[i].Hitbox.Intersects(ammunition[i].isVisible)))
+                        ammunition.RemoveAt(i);
+                }
             }
             previousmouseState = mouseState;
         }

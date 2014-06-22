@@ -11,7 +11,7 @@ namespace Kcaspher
     public class Bullet
     {
         public Vector2 Direction, Position, Velocity, Origin;
-        public Rectangle Hitbox;
+        public Rectangle Hitbox, isVisible;
 
         public Bullet(Vector2 Origin, Vector2 Direction)
         {
@@ -21,6 +21,7 @@ namespace Kcaspher
             Velocity = new Vector2(6f, 6f);
             this.Direction = Direction - Origin;
             this.Direction.Normalize();
+            isVisible = new Rectangle((int)Origin.X - Res.gI().ScaleX(750), (int)Origin.Y - Res.gI().ScaleY(750), Res.gI().ScaleX(1500), Res.gI().ScaleY(1500));
         }
 
         public void update()
@@ -32,7 +33,7 @@ namespace Kcaspher
 
         public void Draw(SpriteBatch spritebatch)
         {
-            spritebatch.Draw(Content_Manager.getInstance().Textures["enemy1"], Hitbox, Color.White);
+            spritebatch.Draw(Content_Manager.getInstance().Textures["Bullet"], Hitbox, Color.White);
         }
     }
 }

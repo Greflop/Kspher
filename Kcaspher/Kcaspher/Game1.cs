@@ -134,8 +134,11 @@ namespace Projet_2._0
             screenmanager.Draw(spriteBatch);
             if (IsMouseVisible)
             {
-                spriteBatch.DrawString(fontdebug, Convert.ToString(mouseState.X), new Vector2(100, 10), Color.White);
-                spriteBatch.DrawString(fontdebug, Convert.ToString(mouseState.Y), new Vector2(100, 40), Color.White);
+                spriteBatch.DrawString(fontdebug, Convert.ToString(camera.centre.X), new Vector2(camera.centre.X + 200, camera.centre.Y + 10), Color.Green);
+                spriteBatch.DrawString(fontdebug, Convert.ToString(camera.centre.Y), new Vector2(camera.centre.X + 200, camera.centre.Y + 40), Color.Green);
+
+                spriteBatch.DrawString(fontdebug, Convert.ToString(mouseState.X), new Vector2(camera.centre.X + 100, camera.centre.Y+10), Color.White);
+                spriteBatch.DrawString(fontdebug, Convert.ToString(mouseState.Y), new Vector2(camera.centre.X + 100, camera.centre.Y+40), Color.White);
             }
             //decors.Draw(spriteBatch);
             spriteBatch.DrawString(fontdebug, Convert.ToString(casperr.getVelocity().X), new Vector2(camera.centre.X + 10 , camera.centre.Y + 10 ), Color.Red);

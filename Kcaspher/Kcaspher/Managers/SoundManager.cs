@@ -20,6 +20,7 @@ namespace Projet_2._0
         static public Song menu;
         static public SoundEffect alert;
         static public SoundEffect hp;
+        static public SoundEffect gun;
 
         static public void LoadContent(ContentManager Content)
         {
@@ -29,7 +30,7 @@ namespace Projet_2._0
             jump = Content.Load<SoundEffect>("Songs/Casper sound/Jump");
             alert = Content.Load<SoundEffect>("Songs/IA sound/Alert_AI");
             hp = Content.Load<SoundEffect>("Songs/Casper sound/Hp_lost");
-
+            gun = Content.Load<SoundEffect>("Songs/Casper sound/gun");
         }
 
 

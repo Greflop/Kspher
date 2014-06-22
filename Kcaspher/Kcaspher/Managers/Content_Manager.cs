@@ -38,6 +38,7 @@ namespace Projet_2._0
             AddTextures("Casper/CasperDroite4");
             AddTextures("Casper/CasperDroiteSaut");
             AddTextures("Casper/CasperFall");
+            AddTextures("Casper/bullet","Bullet");
             AddTextures("Casper/CasperGauche1");
             AddTextures("Casper/CasperGauche2");
             AddTextures("Casper/CasperGauche3");
