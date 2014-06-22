@@ -15,15 +15,12 @@ namespace Kcaspher
         List<Bullet> ammunition;
         MouseState mouseState, previousmouseState;
         Camera camera;
-        Rectangle Rectangle;
 
 
         public Shots()
         {            
             ammunition = new List<Bullet>();
             camera = new Camera(Game1.GetGame().GraphicsDevice.Viewport);
-            //Rectangle = new Rectangle (0,0, Res.gI().ScaleX(4200))
-            //count = 0;
         }
 
         public void update(GameTime gametime, Vector2 origin)
@@ -35,7 +32,7 @@ namespace Kcaspher
                 camera.update(gametime, new Vector2(Res.gI().ScaleX(1680), 0));
             ///
             mouseState = Mouse.GetState();
-            if (previousmouseState.LeftButton == ButtonState.Pressed && mouseState.LeftButton == ButtonState.Released)
+            if (previousmouseState.LeftButton == ButtonState.Released && mouseState.LeftButton == ButtonState.Pressed)
             {
                 ammunition.Add(new Bullet(origin, new Vector2(mouseState.X +camera.centre.X  ,mouseState.Y)));
                 SoundManager.gun.Play();
