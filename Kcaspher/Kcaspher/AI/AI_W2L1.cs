@@ -16,12 +16,12 @@ namespace Kcaspher.AI
 
         public AI_W2L1()
         {
-            AI_w2l1.Add(new AI_moderate(Content_Manager.getInstance().Textures["enemy1"], new Rectangle(100, 180, 40, 40)));
-            AI_w2l1.Add(new AI_moderate(Content_Manager.getInstance().Textures["enemy1"], new Rectangle(300, 180, 40, 40)));
-            AI_w2l1.Add(new AI_moderate(Content_Manager.getInstance().Textures["enemy1"], new Rectangle(1300, 900, 40, 40)));
-            AI_w2l1.Add(new AI_moderate(Content_Manager.getInstance().Textures["enemy1"], new Rectangle(1470, 900, 40, 40)));
-            AI_w2l1.Add(new AI_moderate(Content_Manager.getInstance().Textures["enemy1"], new Rectangle(2270, 217, 40, 40)));
-            AI_w2l1.Add(new AI_moderate(Content_Manager.getInstance().Textures["enemy1"], new Rectangle(2270, 436, 40, 40)));
+            AI_w2l1.Add(new AI_moderate(Content_Manager.getInstance().Textures["enemy1"], new Rectangle(Res.gI().ScaleX(100), Res.gI().ScaleY(180), Res.gI().ScaleX(40), Res.gI().ScaleY(40))));
+            AI_w2l1.Add(new AI_moderate(Content_Manager.getInstance().Textures["enemy1"], new Rectangle(Res.gI().ScaleX(300), Res.gI().ScaleY(180), Res.gI().ScaleX(40), Res.gI().ScaleY(40))));
+            AI_w2l1.Add(new AI_moderate(Content_Manager.getInstance().Textures["enemy1"], new Rectangle(Res.gI().ScaleX(1300), Res.gI().ScaleY(900), Res.gI().ScaleX(40), Res.gI().ScaleY(40))));
+            AI_w2l1.Add(new AI_moderate(Content_Manager.getInstance().Textures["enemy1"], new Rectangle(Res.gI().ScaleX(1470), Res.gI().ScaleY(900), Res.gI().ScaleX(40), Res.gI().ScaleY(40))));
+            AI_w2l1.Add(new AI_moderate(Content_Manager.getInstance().Textures["enemy1"], new Rectangle(Res.gI().ScaleX(2270), Res.gI().ScaleY(217), Res.gI().ScaleX(40), Res.gI().ScaleY(40))));
+            AI_w2l1.Add(new AI_moderate(Content_Manager.getInstance().Textures["enemy1"], new Rectangle(Res.gI().ScaleX(2270), Res.gI().ScaleY(436), Res.gI().ScaleX(40), Res.gI().ScaleY(40))));
         }
 
         public void update(GameTime gametime, Casper casper)

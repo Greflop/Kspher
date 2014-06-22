@@ -59,6 +59,9 @@ namespace Projet_2._0
         AI_W1L1 AI_w1l1;
         AI_W1L2 AI_w1l2;
         AI_W2L1 AI_w2l1;
+        AI_W2L2_2 AI_w2l2_2;
+        AI_W2L2 AI_w2l2;
+        AI_W2L3 AI_w2l3;
         AI_moderate AI2;
         KeyboardState keyboardstate, previouskeyboardstate;
         public Controls controls, controlsPlayer2, controlsWorld2;
@@ -87,7 +90,7 @@ namespace Projet_2._0
             menupauseoption = new Menu_Pause_Options(Content_Manager.getInstance().Textures["menupauseoption"]);
             casper = new Casper(Content_Manager.getInstance().Textures["Casper"], new Rectangle(0, 0, Res.gI().ScaleX(16), Res.gI().ScaleY(34)));
             player2 = new Casper(Content_Manager.getInstance().Textures["Casper"], new Rectangle(Res.gI().ScaleX(50), Res.gI().ScaleY(50), Res.gI().ScaleX(16), Res.gI().ScaleY(34)));
-            casper2 = new Casper(Content_Manager.getInstance().Textures["Player1"], new Rectangle(Res.gI().ScaleX(50), Res.gI().ScaleY(50), Res.gI().ScaleX(31), Res.gI().ScaleY(50)));
+            casper2 = new Casper(Content_Manager.getInstance().Textures["Player1"], new Rectangle(Res.gI().ScaleX(9000), Res.gI().ScaleY(9000), Res.gI().ScaleX(31), Res.gI().ScaleY(50)));
             controls = new Controls(casper.Position, casper.Velocity, casper.Speed, Keys.W, Keys.A, Keys.D, Keys.S);
             controlsPlayer2 = new Controls(player2.Position, player2.Velocity, player2.Speed, Keys.Up, Keys.Left, Keys.Right, Keys.Down);
             controlsWorld2 = new Controls(casper2.Position, casper2.Velocity, casper2.Speed, Keys.W, Keys.A, Keys.D, Keys.S);
@@ -133,6 +136,9 @@ namespace Projet_2._0
             AI_w1l1 = new AI_W1L1();
             AI_w1l2 = new AI_W1L2();
             AI_w2l1 = new AI_W2L1();
+            AI_w2l2 = new AI_W2L2();
+            AI_w2l2_2 = new AI_W2L2_2();
+            AI_w2l3 = new AI_W2L3();
             AI2 = new AI_moderate(Content_Manager.getInstance().Textures["enemy1"], new Rectangle(Res.gI().ScaleX(100), Res.gI().ScaleY(100), Res.gI().ScaleX(50), Res.gI().ScaleY(50)));
             this.gametype = gametype;
             //List<Rectangle> enemies = spikes.getList().Concat<Rectangle>(AI_w1l1.getListRectangle()).ToList<Rectangle>;
@@ -218,7 +224,6 @@ namespace Projet_2._0
                     Game1.GetGame().casperr = casper;
                     AI_w1l1.update(gametime);
                     casper.update(gametime, controls, gametype, w1l1.getList(), spikes.getList().Concat<Rectangle>(AI_w1l1.getListRectangle()));
-                    //AI_w1l1.update(gametime);
                     Game1.GetGame().IsMouseVisible = false;
                     if (keyboardstate.IsKeyDown(Keys.Escape) && previouskeyboardstate.IsKeyUp(Keys.Escape))
                     {
@@ -245,7 +250,6 @@ namespace Projet_2._0
 
                     Game1.GetGame().casperr = casper;
                     AI_w1l2.update(gametime);
-                    //////////////////////////////////////////
                     tp1.EmitterLocation = new Vector2(Res.gI().ScaleX(1280), Res.gI().ScaleY(450));
                     tp1.Update();
                     tp2.EmitterLocation = new Vector2(Res.gI().ScaleX(3490), Res.gI().ScaleY(530));
@@ -320,12 +324,10 @@ namespace Projet_2._0
                     AI_w2l1.update(gametime, casper2);
                     Game1.GetGame().casperr = casper2;
                     casper2.update(gametime, controlsWorld2, gametype, w2l1.getList(), AI_w2l1.getListRectangle());
-                    
                     Game1.GetGame().IsMouseVisible = true;
                     shots.update(gametime, casper2.Position, AI_w2l1.AI_w2l1);
                     if (keyboardstate.IsKeyDown(Keys.Escape) && previouskeyboardstate.IsKeyUp(Keys.Escape))
                     {
-                        //casper.update(gametime);
                         Game1.GetGame().IsMouseVisible = true;
                         MediaPlayer.Stop();
                         MediaPlayer.Play(SoundManager.pause);
@@ -347,12 +349,12 @@ namespace Projet_2._0
                         camera.update(gametime, casper2.Position);
                     if (casper2.Position.X > Res.gI().ScaleX(1680))
                         camera.update(gametime, new Vector2(Res.gI().ScaleX(1680), 0));
-
+                    AI_w2l2.update(gametime,casper2);
+                    AI_w2l2_2.update(gametime);
                     Game1.GetGame().casperr = casper2;
-                    casper2.update(gametime, controlsWorld2, gametype, w2l2.getList(), new List<Rectangle>());
                     Game1.GetGame().IsMouseVisible = true;
                     shots2.update(gametime, casper2.Position, new List<AI_moderate>());
-                    // IA
+                    casper2.update(gametime, controlsWorld2, gametype, w2l2.getList(), AI_w2l2_2.getListRectangle().Concat<Rectangle>(AI_w2l2.getListRectangle()));
                     if (keyboardstate.IsKeyDown(Keys.Escape) && previouskeyboardstate.IsKeyUp(Keys.Escape))
                     {
                         //casper.update(gametime);
@@ -518,18 +520,17 @@ namespace Projet_2._0
                 case GameType.Menu_Play_Solo_world2_lvl1:
                     d_w2l1.Draw(spritebatch);
                     casper2.Draw(spritebatch, Color.White);
-                    //AI2.Draw(spritebatch);
                     AI_w2l1.Draw(spritebatch);
                     casper2.healthpoint.draw(spritebatch, camera);
                     shots.Draw(spritebatch);
-                    //IA
                     break;
                 case GameType.Menu_Play_Solo_world2_lvl2:
                     d_w2l2.Draw(spritebatch);
                     casper2.Draw(spritebatch, Color.White);
                     casper2.healthpoint.draw(spritebatch, camera);
                     shots2.Draw(spritebatch);
-                    // IA
+                    AI_w2l2.Draw(spritebatch);
+                    AI_w2l2_2.Draw(spritebatch);
                     break;
                 case GameType.Menu_Play_Solo_world2_lvl3:
                     d_w2l3.Draw(spritebatch);

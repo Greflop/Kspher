@@ -115,6 +115,7 @@
     <Compile Include="AI\AI_W1L2.cs" />
     <Compile Include="AI\AI_W2L1.cs" />
     <Compile Include="AI\AI_W2L2.cs" />
+    <Compile Include="AI\AI_W2L2_2.cs" />
     <Compile Include="AI\AI_W2L3.cs" />
     <Compile Include="Bullet.cs" />
     <Compile Include="Casper.cs" />
